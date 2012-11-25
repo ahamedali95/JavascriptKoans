@@ -27,6 +27,10 @@
 <script type="text/javascript">
   jasmine.getEnv().addReporter(new JsKoansReporter());
   jasmine.getEnv().execute();
+  var passedTestHider = function(){
+    document.getElementById("__jsKoans_showPassed__").click()
+  }
+  setTimeout(passedTestHider, 100) //uncomment me in order to hide passed tests by default
 </script>
 
 </body>
