@@ -41,10 +41,9 @@ describe("About Functions", function() {
   it("should use lexical scoping to synthesise functions", function () {
     
     function makeIncreaseByFunction(increaseByAmount) {
-      var increaseByFunction = function increaseBy(numberToIncrease) {
+      return function (numberToIncrease) {
         return numberToIncrease + increaseByAmount;
       };
-      return increaseByFunction;
     }
     
     var increaseBy3 = makeIncreaseByFunction(3);
