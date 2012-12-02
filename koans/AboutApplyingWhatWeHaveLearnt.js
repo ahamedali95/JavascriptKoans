@@ -108,13 +108,24 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+    var isMushroom = function(i) {
+      if (i === "mushrooms") {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
 
-    var ingredientCount = _(products).chain()
+    var mushroomCount = _(products).chain()
                                      .map(function(i) {return i['ingredients']})
                                      .flatten()
-                                     .reduce(function(sum, i) {return sum + (i = 'mushrooms' ? 1 : 0}) // NOT WORKING/FINISHED
+                                     //.reduce(function(sum, i) {return sum + isMushroom(i)})
+                                     .reduce(function(sum, i) {return sum + (i === "mushrooms" ? 1 : 0)}, 0)
+                                     .value();
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    ingredientCount['mushrooms'] = mushroomCount;
+
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
