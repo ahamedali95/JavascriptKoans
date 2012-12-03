@@ -73,16 +73,21 @@ describe("About Objects", function () {
     });    
   });
 
+
+
+
+
+
   it("should know that properties can be added and deleted", function () {
     var meglomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    expect("secretary" in meglomaniac).toBe(FILL_ME_IN);
+    expect("secretary" in meglomaniac).toBe(undefined);
 
     meglomaniac.secretary = "Agent Smith";
-    expect("secretary" in meglomaniac).toBe(FILL_ME_IN);
+    expect("secretary" in meglomaniac).toBe(true);
     
     delete meglomaniac.henchman;
-    expect("henchman" in meglomaniac).toBe(FILL_ME_IN);
+    expect("henchman" in meglomaniac).toBe(undefined);
   });
 
 
