@@ -39,8 +39,10 @@ describe("About Applying What We Have Learnt", function() {
 
       var productsICanEat = [];
 
+      var toppings = [];
+
       /* solve using filter() & all() / any() */ 
-      for (var i = 0; i < products.length; i++) {}
+      var pizzaToEat = _.filter()
 
       expect(productsICanEat.length).toBe(1);
   });
@@ -49,12 +51,20 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (imperative)", function () {
     
-    for(var i = 0; i < 1000; i++){
-      var sum = 0;
+    var sum = 0;
+    for(var i = 1; i < 1000; i+=1){
       if (i % 5 === 0 || i % 3 === 0){
-        i += sum;
+        sum += i;
       }
     }
+
+    var sum = 0;
+    for(var i=1; i<1000; i+=1) {
+      if (i % 3 === 0 || i % 5 === 0) {
+        sum += i;
+      }
+    }
+
     
     expect(sum).toBe(FILL_ME_IN);
   });
