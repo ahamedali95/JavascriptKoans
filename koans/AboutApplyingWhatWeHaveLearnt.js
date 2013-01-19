@@ -88,6 +88,15 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   /*********************************************************************************/
+
+    products = [
+       { name: "Sonoma", ingredients: ["artichoke", "sundried tomatoes", "mushrooms"], containsNuts: false },
+       { name: "Pizza Primavera", ingredients: ["roma", "sundried tomatoes", "goats cheese", "rosemary"], containsNuts: false },
+       { name: "South Of The Border", ingredients: ["black beans", "jalapenos", "mushrooms"], containsNuts: false },
+       { name: "Blue Moon", ingredients: ["blue cheese", "garlic", "walnuts"], containsNuts: true },
+       { name: "Taste Of Athens", ingredients: ["spinach", "kalamata olives", "sesame seeds"], containsNuts: true }
+    ];
+
    it("should count the ingredient occurrence (imperative)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
@@ -97,14 +106,27 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
+    var ingredientize = function (product) {
+      return product.ingredients;
+    }
+
+    var counter = function (memo, item) {
+      if (memo.item === undefined) {
+        memo.item = 1;
+      } else {
+        memo.item = memo.item + 1;
+      }
+      return memo;
+    }
     /* chain() together map(), flatten() and reduce() */
 
+    //count = _.
     expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
   });
 
