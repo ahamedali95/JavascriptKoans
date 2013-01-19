@@ -11,16 +11,16 @@ describe("About Higher Order Functions", function () {
     var numbers = [1,2,3];
     var odd = _(numbers).filter(function (x) { return x % 2 !== 0 });
     
-    expect(odd).toEqual(FILL_ME_IN);
-    expect(odd.length).toBe(FILL_ME_IN);
-    expect(numbers.length).toBe(FILL_ME_IN);
+    expect(odd).toEqual([1,3]);
+    expect(odd.length).toBe(2);
+    expect(numbers.length).toBe(3);
   });
     
   it("should use 'map' to transform each element", function () {
     var numbers = [1, 2, 3];
     var numbersPlus1 = _(numbers).map(function(x) { return x + 1 });
     
-    expect(numbersPlus1).toEqual(FILL_ME_IN);
+    expect(numbersPlus1).toEqual([2,3,4]);
     expect(numbers).toEqual(FILL_ME_IN);
   });
     
