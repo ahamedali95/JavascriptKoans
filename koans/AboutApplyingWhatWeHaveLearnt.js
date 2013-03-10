@@ -67,21 +67,22 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    /* .reduce(function (sum, x) { return sum + x }) */
+    /* try chaining range() and reduce() */
+    var sum = _(_.range(0,1000,3)).chain()
+        .reduce(function (sum,x) { return sum + x })
+        .value()
+      + _(_.range(0,1000,5)).chain()
+      .reduce(function (sum,x) {
+        if (x % 3 != 0) {
+          return sum + x
+        }
+        else {
+          return sum
+        }
+      })
+      .value();
 
-    // var sum = _.range(0,1001);    /* try chaining range() and reduce() */
-
-    // var makeMagic = function(number) {
-    //   if (number % 3 === 0 || number % 5 === 0) {
-    //     return number
-    //   }
-    // }
-
-    // result = _(sum).chain().reduce(function(sum, x) {return sum + makeMagic(x)})
-    var arr_div_3 = _.range(0,1001,3);
-    var arr_div_5 = _(_.range(0,1001,5)).chain().filter(function(x){return x % 3 !== 0});
-    var result = _([arr_div_3],[arr_div_5]).flatten
-    expect(233168).toBe(result   )
+    expect(233168).toBe(sum)
   });
 
   /*********************************************************************************/
@@ -94,7 +95,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
@@ -102,12 +103,29 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    ingredientCount = _(products).chain()
+        .map(function(x) { return x['ingredients'] })
+        .flatten()
+        .reduce(function(mem, x) {
+
+          if(mem[x]){
+            mem[x] = mem[x] + 1;
+          }
+          else {
+            mem[x] = 1
+          }
+
+          return mem;
+
+        }, {})
+        .value()
+
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
   it("should find the largest prime factor of a composite number", function () {
 
   });
@@ -128,5 +146,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+
 });
